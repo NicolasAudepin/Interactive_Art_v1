@@ -26,6 +26,11 @@ class Sweet_Arpegiato(exp):
             exp.__init__(self, threadID, input_shape)
             self.name = "Sweet Arpegiato"
 
+
+
+            from .Filter_Modules.Midi_output_module import MidiOutMod
+            self.midiout= MidiOutMod()
+
             print(" - loading sounds")
             from .Filter_Modules.sounds.Module_SimpleAudio import SoundLoops
             self.sound_to_track = [ 0 for i in range(7)]

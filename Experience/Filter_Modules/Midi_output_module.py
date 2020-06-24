@@ -2,7 +2,7 @@
 import threading
 import random
 
-class MidiOut (threading.Thread):
+class MidiOutMod (threading.Thread):
     def __init__(self):
         
         threading.Thread.__init__(self)
@@ -14,9 +14,13 @@ class MidiOut (threading.Thread):
 
         import mido
 
-        print(" - loading mido")
+        print(" - setting mido port")
 
-        port = mido.open_output('midoMod')
+        print(mido.get_output_names())
+
+        port = mido.open_output() 
+
+        print(port.name)
 
 
 

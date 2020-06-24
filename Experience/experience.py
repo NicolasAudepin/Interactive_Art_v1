@@ -4,8 +4,16 @@ import threading
 import time
 import numpy as np
 
+"""
+The default experience. 
+the main thread continuously updates its input image and gets its output image.
+In theory, all this class and the classes inheriting from it should have to do is using the Treat_Image function
+to update the ouput image.   
 
+
+"""
 class Experience (threading.Thread):
+    #Override this
     def __init__(self, threadID, input_shape):
         
         threading.Thread.__init__(self)
@@ -19,6 +27,8 @@ class Experience (threading.Thread):
     def setInputImage(self,image):
         self.input_im = image
 
+
+    #Override this 
     def Treat_Image(self,image):
 
         output = image % 128

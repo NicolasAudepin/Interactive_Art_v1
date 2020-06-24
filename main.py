@@ -16,10 +16,13 @@ print("*** CHOOSE YOUR EXPERIENCE ***")
 print("*** INITIALISE EXPERIENCE ***")
 #from Experience.experience import Experience as exp
 #experience = exp(1,  input_shape = input_shape)
-from  Experience.Sweet_Dawn import Sweet_Dawn
-from Experience.Sweet_Arpegiato import Sweet_Arpegiato
 
+#from  Experience.Sweet_Dawn import Sweet_Dawn
+
+from Experience.Sweet_Arpegiato import Sweet_Arpegiato
 experience = Sweet_Arpegiato(1,input_shape)
+
+
 
 print(" - Experience : "+ experience.name)
 experience.start()
@@ -33,6 +36,8 @@ while(exitFlag == 0):
     ret, frame = cap.read()
     experience.setInputImage(frame)
     output_im = experience.getOutputImage()
+
+    #all the visual stuff independant from the experience like displayed resolution should be handeled here 
 
     cv2.imshow('frame',cv2.resize(output_im,(600,600)))
 
