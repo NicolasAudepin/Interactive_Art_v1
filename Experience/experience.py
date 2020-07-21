@@ -37,7 +37,7 @@ class Experience (threading.Thread):
     
     def stop(self):
         self.exitFlag = 1
-        print(" - Shuting Down "+ self.name)
+        print(" - Shuting Down Experience "+ self.name)
 
 
     def run(self):

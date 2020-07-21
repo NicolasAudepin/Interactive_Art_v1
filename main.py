@@ -12,15 +12,36 @@ input_shape = (256,256,3)
 print("*** CHOOSE YOUR EXPERIENCE ***")
 
 
+print(" 0 Default experience ")
+print(" 1 Sweet Dawn (crashes)")
+print(" 2 Sweet Arpegiato ")
+print(" 3 Sweet VCV (in progress) ")
+print("\nChoose an experience")
+nb = input()
 
-print("*** INITIALISE EXPERIENCE ***")
+print("*** INITIALISE EXPERIENCE ",nb ," ***")
+
+from Experience.experience import Experience as exp
+experience = exp(1,  input_shape = input_shape)
+if nb =="0":
+    from Experience.experience import Experience as exp
+    experience = exp(1,  input_shape = input_shape)
+elif nb =="1":
+    from  Experience.Sweet_Dawn import Sweet_Dawn
+    experience = Sweet_Dawn(1,  input_shape = input_shape)
+elif nb =="2":
+    from Experience.Sweet_Arpegiato import Sweet_Arpegiato
+    experience = Sweet_Arpegiato(1,input_shape)
+elif nb =="3":
+    from Experience.SweetVCV import Sweet_VCV
+    experience = Sweet_VCV(1,input_shape)
+
 #from Experience.experience import Experience as exp
 #experience = exp(1,  input_shape = input_shape)
 
 #from  Experience.Sweet_Dawn import Sweet_Dawn
 
-from Experience.Sweet_Arpegiato import Sweet_Arpegiato
-experience = Sweet_Arpegiato(1,input_shape)
+
 
 
 

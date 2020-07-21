@@ -16,8 +16,8 @@ class multi_Tracker_Module(threading.Thread):
         self.labeled = labeled
         self.max_tracker = 8
 
-        self.matching_treshold = 0.003 #matching score needed to match a tracker and some coordiantes
-        self.forgeting_speed = self.matching_treshold * 10 # certanty lost every frame 
+        self.matching_treshold = 0.001 #matching score needed to match a tracker and some coordiantes
+        self.forgeting_speed = self.matching_treshold * 20 # certanty lost every frame 
         self.forgeting_treshold = 0.4 #below this certainty the tracker is considered lost and is removed
 
 
