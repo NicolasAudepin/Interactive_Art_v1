@@ -8,7 +8,11 @@ from .Base_module import Threaded_Module
 import mido
 from mido import Message 
 
+
 class MidiOutMod (Threaded_Module):
+    """A module that allows to output midi signals to a choosen midi port.
+    using the float_to_midi class it send updated midi signals representing the float values
+    """
     def __init__(self,midi_port):
         
         Threaded_Module.__init__(self)

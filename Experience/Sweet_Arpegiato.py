@@ -3,7 +3,7 @@ from Experience.experience import Experience as exp
 #from ..Modules.keras_yolo3 import yolo as yolo
 
 
-from .Filter_Modules.sounds.Module_SimpleAudio import SoundLoops
+from .Modules.sounds.Module_SimpleAudio import SoundLoops
 
 import cv2
 from PIL import Image, ImageFont, ImageDraw
@@ -17,7 +17,7 @@ import numpy as np
 import colorsys
 import os
 from timeit import default_timer as timer
-from .Filter_Modules.Tracking_module import multi_Tracker_Module , Tracker
+from .Modules.Tracking_module import multi_Tracker_Module , Tracker
             
 
 
@@ -28,21 +28,26 @@ class Sweet_Arpegiato(exp):
 
 
             print(" - loading sounds")
-            from .Filter_Modules.sounds.Module_SimpleAudio import SoundLoops
+            from .Modules.sounds.Module_SimpleAudio import SoundLoops
             self.sound_to_track = [ 0 for i in range(7)]
 
-            self.JukBox  = SoundLoops()     
-            self.JukBox.start()
+            self.Jukbox  = SoundLoops(
+                "D:\\Documents\\GitHub\\Interactive_Art_v1\\Experience\\Modules\\sounds\\sweet_arpegiato",
+                "D:\\Documents\\GitHub\\Interactive_Art_v1\\Experience\\Modules\\sounds\\swet_beat\\Sweet Arpeges 9-SessionDry Kit.wav"
+                )   
+            self.moduleslist.append(self.Jukbox)  
+            self.Jukbox.start()
 
             print(" - loading Yolo")  
-            from .Filter_Modules.keras_yolo3 import yolo         
+            from .Modules.keras_yolo3 import yolo         
             global graph # needed for yolo to read the images stuff to do with multi threading
             graph = tf.get_default_graph()
             self.Y = yolo.YOLO()
 
             print(" - setting Tracking module")
-            from .Filter_Modules.Tracking_module import multi_Tracker_Module , Tracker
+            from .Modules.Tracking_module import multi_Tracker_Module , Tracker
             self.multi_Tracker = multi_Tracker_Module(dim=4,labeled = True)
+            self.moduleslist.append(self.multi_Tracker)
             self.multi_Tracker.start()
 
 
@@ -67,10 +72,8 @@ class Sweet_Arpegiato(exp):
         self.multi_Tracker.set_new_coordonates(res)
 
 
-
         # get the trackers to draw 
         trackers = self.multi_Tracker.tracker_list
-        
         
         
         #remove lost trackers
@@ -93,14 +96,13 @@ class Sweet_Arpegiato(exp):
             if type(obj) == Tracker:
 
                 soundlist.append(i)
-        self.JukBox.nextloops = soundlist
+        self.Jukbox.nextloops = soundlist
 
 
         #draw all trackers 
         for tracker in trackers:
              
             if False:
-
                 #draw the prediction
                 x,y,a,b = tracker.current_position_estimation
                 x= int(x)
@@ -127,10 +129,4 @@ class Sweet_Arpegiato(exp):
         out = image
         return out
     
-    def stop(self):
-        self.JukBox.exitFlag=1
-        self.multi_Tracker.exitFlag = 1
-        self.exitFlag = 1
-        print(" - Shuting Down  Thread"+ self.name)
-
 

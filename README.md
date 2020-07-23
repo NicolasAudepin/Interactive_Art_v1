@@ -29,5 +29,15 @@
  - Tensorflow 1.15.0
  - Keras 2.3.1
  - numpy
+
  - cv2
  - PIL
+
+ - mido
+ - simpleaudio 
+
+
+
+
+
+

@@ -23,7 +23,7 @@ class Threaded_Module (threading.Thread):
         print(" - module "+ self.name + " running")
 
         while(self.exitFlag == 0):
-            print("I ," + self.name +" am running")
+            print("I ," + self.name +", am running")
             time.sleep(2)
         
         
