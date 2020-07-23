@@ -34,7 +34,10 @@
  - PIL
 
  - mido
- - simpleaudio 
+ - simpleaudio
+
+ - PyAudio
+ - speech_recognition 
 
 
 
