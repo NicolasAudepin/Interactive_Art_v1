@@ -3,33 +3,24 @@ import threading
 import random
 import sys
 import time
+from .Base_module import Threaded_Module
 
 import mido
 from mido import Message 
 
-class MidiOutMod (threading.Thread):
+class MidiOutMod (Threaded_Module):
     def __init__(self,midi_port):
-
-
-        self.signals = []
         
-        threading.Thread.__init__(self)
-
+        Threaded_Module.__init__(self)
         self.name = "Midi out"
-        self.exitFlag =0
-
+        
         print(" - loading mido")
-
-
-
         print(" - setting mido port")
-
+        
         print(mido.get_output_names())
-
         self.port = mido.open_output(midi_port) 
-
         print(self.port.name)
-
+        self.signals = []
 
             
     def run(self):
@@ -43,8 +34,8 @@ class MidiOutMod (threading.Thread):
                 print(on)
                 self.port.send(on)
 
-               
-        print (" - stop Module" + self.name)
+
+    def ModuleStop(self):
         for ftm in self.signals:
             off = Message('note_off',note=ftm.note)
             print(off)

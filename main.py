@@ -22,8 +22,7 @@ nb = input()
 
 print("*** INITIALISE EXPERIENCE ",nb ," ***")
 
-from Experience.experience import Experience as exp
-experience = exp(1,  input_shape = input_shape)
+
 if nb =="0":
     from Experience.experience import Experience as exp
     experience = exp(1,  input_shape = input_shape)
@@ -39,7 +38,9 @@ elif nb =="3":
 elif nb =="4":
     from Experience.Basic_Experience import Example_experience
     experience = Example_experience(1,input_shape)
-
+else:
+    from Experience.TestExp import testExp as exp
+    experience = exp(1,  input_shape = input_shape)
 #from Experience.experience import Experience as exp
 #experience = exp(1,  input_shape = input_shape)
 

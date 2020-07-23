@@ -2,13 +2,15 @@ import time
 import numpy as np
 import random
 import colorsys
+from .Base_module import Threaded_Module
 
 import threading
 
-class multi_Tracker_Module(threading.Thread):
+class multi_Tracker_Module(Threaded_Module):
     def __init__(self, dim,labeled = False):
-        threading.Thread.__init__(self)
-        self.exitFlag = 0
+        Threaded_Module.__init__(self)
+        self.name = "Tracking Module"
+
         self.data_waiting = False
         self.last_given_coordonate = []
         self.last_given_time = time.time()
@@ -57,7 +59,6 @@ class multi_Tracker_Module(threading.Thread):
 
 
     def run(self):
-        print(" - Trackers Running")
         while(self.exitFlag ==0):
             if(self.data_waiting):
                 self.data_waiting = False
@@ -122,9 +123,8 @@ class multi_Tracker_Module(threading.Thread):
 
                 
         
-    def stop(self):
-        self.exitFlag = 1
-        print(" - Shuting Down Trackers")
+    def ModuleStop(self):
+        print("Shuting Down Trackers")
         
 
 

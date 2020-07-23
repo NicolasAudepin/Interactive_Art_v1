@@ -8,7 +8,8 @@
 
 ## The experiences
  Right now we have:
-  - The default experience 
+  - The default experience from which all the other inherit
+  - Basic_Experience (A blanck experience used as a reference when creating other ones) 
   - Sweet Arpegio
   - Sweet Dawn
   - SweetVCV (This one outputs midi data and I use VCV Rack to make music out of it)
@@ -16,6 +17,7 @@
 
 ## The modules
  Right now we have:
+  - The base treaded module from which all the other should inherit 
   - Midi output module
   - Tracking module
   - Yolo v3 (I will redo it myself soon because now its just a copy of somemone elses implementation) 

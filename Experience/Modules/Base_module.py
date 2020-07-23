@@ -6,22 +6,27 @@ class Threaded_Module (threading.Thread):
     def __init__(self):
         super().__init__()
         self.name = "Empty module"
-        self.exitingFlag  = 0 #put to one when its time to stop
+        self.exitFlag  = 0 #put to one when its time to stop
     
-    def onStop(self): #called when stopping the thread to stop midi output for example 
-        print("onstop")
+    #Override me
+    def ModuleStop(self): #called when stopping the thread to stop midi output for example 
+        print("*mod stopping stuff*")
 
-    def stopThread(self): #call me to stop this thread
-        self.exitingFlag = 1
+    def stop(self): #call me to stop this thread
+        self.exitFlag = 1
+        print(" - "+self.name+" stopping")
+        self.ModuleStop()
 
+    
+    #Override me
     def run(self):
         print(" - module "+ self.name + " running")
 
-        while(self.exitingFlag == 0):
+        while(self.exitFlag == 0):
             print("I ," + self.name +" am running")
             time.sleep(2)
-        print(" - stopping module "+ self.name)
-        self.onStop()
+        
+        
 
 
 

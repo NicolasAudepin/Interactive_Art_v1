@@ -13,7 +13,7 @@ to update the ouput image.
 
 """
 class Experience (threading.Thread):
-    #Override this
+    #reuse this
     def __init__(self, threadID, input_shape):
         
         threading.Thread.__init__(self)
@@ -23,6 +23,7 @@ class Experience (threading.Thread):
         self.input_im = np.zeros(input_shape,np.uint8)
         self.output_im = np.zeros(input_shape,np.uint8)
         self.exitFlag = 0 
+        self.moduleslist = []
 
     def setInputImage(self,image):
         self.input_im = image
@@ -35,9 +36,12 @@ class Experience (threading.Thread):
 
         return output
     
-    def stop(self):#called by the main
+    def stop(self):#called by the main and should theorically not be overrident 
         self.exitFlag = 1
+        time.sleep(0.4)#waiting for the while loop to stop for cleaner prints
         print(" - Shuting Down Modules")
+        for mod in self.moduleslist:
+            mod.stop()
 
 
     def run(self):#called by the main
