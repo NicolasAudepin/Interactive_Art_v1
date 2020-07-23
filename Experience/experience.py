@@ -35,17 +35,18 @@ class Experience (threading.Thread):
 
         return output
     
-    def stop(self):
+    def stop(self):#called by the main
         self.exitFlag = 1
-        print(" - Shuting Down Experience "+ self.name)
+        print(" - Shuting Down Modules")
 
 
-    def run(self):
+    def run(self):#called by the main
         print (" - Starting " + self.name)
         while(self.exitFlag ==0):
             input_im = self.input_im
             self.output_im = self.Treat_Image(input_im)
-            
+
+        #when stopped    
         print (" - Exiting " + self.name)
 
     def getOutputImage(self):

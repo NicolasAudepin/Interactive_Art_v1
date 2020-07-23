@@ -16,6 +16,7 @@ print(" 0 Default experience ")
 print(" 1 Sweet Dawn (crashes)")
 print(" 2 Sweet Arpegiato ")
 print(" 3 Sweet VCV (in progress) ")
+print(" 4 Example Experience ")
 print("\nChoose an experience")
 nb = input()
 
@@ -35,6 +36,9 @@ elif nb =="2":
 elif nb =="3":
     from Experience.SweetVCV import Sweet_VCV
     experience = Sweet_VCV(1,input_shape)
+elif nb =="4":
+    from Experience.Basic_Experience import Example_experience
+    experience = Example_experience(1,input_shape)
 
 #from Experience.experience import Experience as exp
 #experience = exp(1,  input_shape = input_shape)

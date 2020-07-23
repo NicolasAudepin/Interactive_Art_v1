@@ -31,9 +31,6 @@ class MidiOutMod (threading.Thread):
         print(self.port.name)
 
 
-
-
-
             
     def run(self):
         print (" - start " + self.name)
