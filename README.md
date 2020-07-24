@@ -19,20 +19,19 @@
  Right now we have:
   - The base treaded module from which all the other should inherit 
   - Midi output module
+  - speech recgnition module 
   - Tracking module
   - Yolo v3 (I will redo it myself soon because now its just a copy of somemone elses implementation) 
 
 
 ## Requierements
-
+If you want all the modules to work thi should do: 
  - python 3.7.4
  - Tensorflow 1.15.0
  - Keras 2.3.1
  - numpy
-
  - cv2
  - PIL
-
  - mido
  - simpleaudio
 
