@@ -17,6 +17,8 @@ print(" 1 Sweet Dawn (crashes)")
 print(" 2 Sweet Arpegiato ")
 print(" 3 Sweet VCV ")
 print(" 4 TextOnScreen")
+print(" 5 Mouvement (crashes)")
+print(" 6 Joconde")
 print("\nChoose an experience")
 nb = input()
 
@@ -44,6 +46,9 @@ elif nb =="4":
 elif nb =="5":
     from Experience.Mouvement import Mouvement_experience
     experience = Mouvement_experience(1,input_shape)
+elif nb =="6":
+    from Experience.Joconde import Joconde
+    experience = Joconde(1,input_shape)
 else:
     from Experience.TestExp import testExp as exp
     experience = exp(1,  input_shape = input_shape)

@@ -13,6 +13,7 @@
   - Sweet Arpegio
   - Sweet Dawn
   - SweetVCV (This one outputs midi data and I use VCV Rack to make music out of it)
+  - Joconde (Try stuff with Haar Cascades)
 
 
 ## The modules
@@ -21,6 +22,7 @@
   - Midi output module
   - speech recgnition module 
   - Tracking module
+  - Haar cascade module to detect face element (it's so bad its good)
   - Yolo v3 (I will redo it myself soon because now its just a copy of somemone elses implementation) 
 
 

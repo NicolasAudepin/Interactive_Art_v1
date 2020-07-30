@@ -81,7 +81,7 @@
         },
         {
           "id": 7,
-          "value": 1.0
+          "value": 1.39899993
         },
         {
           "id": 8,
@@ -593,7 +593,7 @@
           0.5,
           true,
           false,
-          0.321542025,
+          0.323117405,
           0.5,
           true,
           false,
@@ -601,11 +601,11 @@
           0.5,
           false,
           false,
-          0.276485771,
+          0.278121769,
           0.5,
           true,
           false,
-          0.878793955,
+          0.880671501,
           0.5,
           false,
           false,
@@ -773,6 +773,7 @@
         }
       ],
       "leftModuleId": 154,
+      "rightModuleId": 230,
       "data": {
         "m_channels": [
           1.0,
@@ -783,16 +784,16 @@
           0.5,
           false,
           false,
-          0.649567604,
+          0.711788952,
           0.5,
           false,
           false,
-          0.322539777,
+          0.324062645,
           0.5,
           false,
           false
         ],
-        "m_master_volume": 0.000987853738,
+        "m_master_volume": 0.000987648964,
         "m_master_mute_trig": false,
         "m_low_power": false,
         "m_cvcompatible": false,
@@ -872,7 +873,7 @@
     {
       "id": 152,
       "plugin": "Bogaudio",
-      "version": "1.1.31",
+      "version": "1.1.33",
       "model": "Bogaudio-UMix",
       "params": [],
       "leftModuleId": 147,
@@ -1221,7 +1222,7 @@
       "leftModuleId": 164,
       "data": {
         "m_channels": [
-          0.660582542,
+          0.662156105,
           0.5,
           true,
           false,
@@ -1229,16 +1230,16 @@
           0.5,
           true,
           true,
-          0.650354385,
+          0.651927948,
           0.5,
           false,
           false,
-          0.323288709,
+          0.324811488,
           0.5,
           false,
           false
         ],
-        "m_master_volume": 0.652557373,
+        "m_master_volume": 0.654130936,
         "m_master_mute_trig": false,
         "m_low_power": false,
         "m_cvcompatible": false,
@@ -1383,7 +1384,7 @@
     {
       "id": 167,
       "plugin": "Bogaudio",
-      "version": "1.1.31",
+      "version": "1.1.33",
       "model": "Bogaudio-UMix",
       "params": [],
       "leftModuleId": 152,
@@ -1401,7 +1402,7 @@
     {
       "id": 168,
       "plugin": "Bogaudio",
-      "version": "1.1.31",
+      "version": "1.1.33",
       "model": "Bogaudio-UMix",
       "params": [],
       "leftModuleId": 151,
@@ -1661,7 +1662,7 @@
     {
       "id": 184,
       "plugin": "Bogaudio",
-      "version": "1.1.31",
+      "version": "1.1.33",
       "model": "Bogaudio-Sums",
       "params": [],
       "leftModuleId": 174,
@@ -1677,7 +1678,7 @@
     {
       "id": 185,
       "plugin": "Bogaudio",
-      "version": "1.1.31",
+      "version": "1.1.33",
       "model": "Bogaudio-Sums",
       "params": [],
       "leftModuleId": 184,
@@ -2268,24 +2269,24 @@
       "leftModuleId": 196,
       "data": {
         "m_channels": [
-          1.32100677,
+          1.31953812,
           0.5,
           true,
           false,
-          1.04141164,
+          1.0394702,
           0.5,
           true,
           true,
-          0.314722419,
+          0.31629777,
           0.5,
           true,
           false,
-          0.754593611,
+          0.75627017,
           0.5,
           false,
           false
         ],
-        "m_master_volume": 0.653344154,
+        "m_master_volume": 0.654917717,
         "m_master_mute_trig": false,
         "m_low_power": false,
         "m_cvcompatible": false,
@@ -2303,7 +2304,7 @@
     {
       "id": 201,
       "plugin": "ImpromptuModular",
-      "version": "1.1.7",
+      "version": "1.1.8",
       "model": "Clocked",
       "params": [
         {
@@ -3037,7 +3038,7 @@
     {
       "id": 228,
       "plugin": "Bogaudio",
-      "version": "1.1.31",
+      "version": "1.1.33",
       "model": "Bogaudio-Cmp",
       "params": [
         {
@@ -3113,6 +3114,55 @@
       "pos": [
         76,
         1
+      ]
+    },
+    {
+      "id": 230,
+      "plugin": "Fundamental",
+      "version": "1.4.0",
+      "model": "Scope",
+      "params": [
+        {
+          "id": 0,
+          "value": 4.0
+        },
+        {
+          "id": 1,
+          "value": 0.0
+        },
+        {
+          "id": 2,
+          "value": 0.0
+        },
+        {
+          "id": 3,
+          "value": 0.0
+        },
+        {
+          "id": 4,
+          "value": 9.73500061
+        },
+        {
+          "id": 5,
+          "value": 0.0
+        },
+        {
+          "id": 6,
+          "value": 0.0
+        },
+        {
+          "id": 7,
+          "value": 0.0
+        }
+      ],
+      "leftModuleId": 150,
+      "data": {
+        "lissajous": 0,
+        "external": 0
+      },
+      "pos": [
+        176,
+        4
       ]
     }
   ],
@@ -3436,14 +3486,6 @@
       "inputModuleId": 162,
       "inputId": 0,
       "color": "#c9b70e"
-    },
-    {
-      "id": 615,
-      "outputModuleId": 151,
-      "outputId": 0,
-      "inputModuleId": 168,
-      "inputId": 0,
-      "color": "#c91847"
     },
     {
       "id": 658,
@@ -3990,14 +4032,6 @@
       "color": "#c91847"
     },
     {
-      "id": 766,
-      "outputModuleId": 198,
-      "outputId": 4,
-      "inputModuleId": 150,
-      "inputId": 30,
-      "color": "#0c8e15"
-    },
-    {
       "id": 765,
       "outputModuleId": 228,
       "outputId": 0,
@@ -4020,6 +4054,38 @@
       "inputModuleId": 229,
       "inputId": 1,
       "color": "#c9b70e"
+    },
+    {
+      "id": 766,
+      "outputModuleId": 198,
+      "outputId": 4,
+      "inputModuleId": 150,
+      "inputId": 30,
+      "color": "#0c8e15"
+    },
+    {
+      "id": 615,
+      "outputModuleId": 151,
+      "outputId": 0,
+      "inputModuleId": 168,
+      "inputId": 0,
+      "color": "#c91847"
+    },
+    {
+      "id": 772,
+      "outputModuleId": 150,
+      "outputId": 1,
+      "inputModuleId": 230,
+      "inputId": 1,
+      "color": "#c91847"
+    },
+    {
+      "id": 773,
+      "outputModuleId": 211,
+      "outputId": 0,
+      "inputModuleId": 149,
+      "inputId": 20,
+      "color": "#0986ad"
     }
   ]
 }
