@@ -27,7 +27,7 @@ class TextOnScreen(exp):
 
                 print(" - Speech recognition stuff")
                 from .Modules.Speech_Recognition_module import Speech_Recognition as SR
-                self.speechmod = SR(device_index=1,Sphinx = False,Google = True,showmic=True)
+                self.speechmod = SR(device_index=2,Google = True,showmic=False)
                 self.moduleslist.append(self.speechmod)
                 self.speechmod.start()
 
@@ -36,7 +36,8 @@ class TextOnScreen(exp):
                 self.text = ""
                 print(" - visual stuff")
                 #cv2 put text stuff
-                self.font = cv2.FONT_HERSHEY_SIMPLEX
+                self.font = ImageFont.truetype('Fonts\\typewriter\\TYPEWR__.TTF', 30)
+                print(self.font)
                 self.fontScale = 1
                 self.lineType = 2
                 self.textcolor = (0,0,0)
@@ -44,12 +45,12 @@ class TextOnScreen(exp):
 
         #this called in the while loop and take as input an image
         def Treat_Image(self,image):
-                fnt = ImageFont.truetype('arial.ttf', 30)
+
 
                 imageasarray = Image.fromarray(image)
-                self.text = self.speechmod.textBuffG
+                self.text = self.speechmod.textBuff
                 draw = ImageDraw.Draw(imageasarray)
-                draw.text((10,10), self.text, font=fnt, fill=(0,0,0))
+                draw.text((10,10), self.text, font=self.font, fill=(0,0,0))
 
 
                 out = np.array(imageasarray)  

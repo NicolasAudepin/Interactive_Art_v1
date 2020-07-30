@@ -15,7 +15,7 @@ print(" -1 Example Experience ")
 print(" 0 Default experience ")
 print(" 1 Sweet Dawn (crashes)")
 print(" 2 Sweet Arpegiato ")
-print(" 3 Sweet VCV (in progress) ")
+print(" 3 Sweet VCV ")
 print(" 4 TextOnScreen")
 print("\nChoose an experience")
 nb = input()
@@ -41,6 +41,9 @@ elif nb =="3":
 elif nb =="4":
     from Experience.TextOnScreen import TextOnScreen
     experience = TextOnScreen(1,input_shape)
+elif nb =="5":
+    from Experience.Mouvement import Mouvement_experience
+    experience = Mouvement_experience(1,input_shape)
 else:
     from Experience.TestExp import testExp as exp
     experience = exp(1,  input_shape = input_shape)
@@ -61,6 +64,9 @@ print("*** STARTING ***")
 print("press q to exit")
 exitFlag = 0
 while(exitFlag == 0):
+
+    #import pathlib
+    #print(pathlib.Path().absolute())
     
     ret, frame = cap.read()
     experience.setInputImage(frame)
@@ -68,7 +74,7 @@ while(exitFlag == 0):
 
     #all the visual stuff independant from the experience like displayed resolution should be handeled here 
 
-    cv2.imshow('frame',cv2.resize(output_im,(600,600)))
+    cv2.imshow('frame',cv2.resize(output_im,(1830,1200)))#roughly projector size
 
     
     if cv2.waitKey(1) & 0xFF == ord('q'):

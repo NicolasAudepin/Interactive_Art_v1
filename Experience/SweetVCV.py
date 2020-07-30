@@ -32,7 +32,7 @@ class Sweet_VCV(exp):
 
             print(" - setting Tracking module")
             from .Modules.Tracking_module import multi_Tracker_Module , Tracker
-            self.multi_Tracker = multi_Tracker_Module(dim=8,labeled = True)
+            self.multi_Tracker = multi_Tracker_Module(dim=5,labeled = True)
             self.multi_Tracker.start()
             #must be after the yolo import for some reason
             
@@ -42,7 +42,7 @@ class Sweet_VCV(exp):
             self.midiout= MidiOutMod('midoVCV 2')
             
             #tracks the number of objects on channel 1
-            self.nb_objectstomidi = float_to_midi('nb_objects',[0,8],10,1)
+            self.nb_objectstomidi = float_to_midi('nb_objects',[0,5],10,1)
             self.midiout.signals.append(self.nb_objectstomidi)
             
             #track the size of objects on channel 2
@@ -74,6 +74,8 @@ class Sweet_VCV(exp):
         with graph.as_default():
             res = self.Y.detect_image(imageasarray)
          #print(res)
+
+        res = [(label, l,t,r,b) for (label, l,t,r,b) in res if label == 'person']
 
         self.nb_objectstomidi.set_val(len(res))
 
@@ -111,7 +113,7 @@ class Sweet_VCV(exp):
         areas = [area(tracker.last_known_position) for tracker in trackers]
         print(areas)
 
-        self.sizetomidi.set_val(int(max(areas,default=0)))
+        self.sizetomidi.set_val(0)#int(max(areas,default=0)))
 
         
         out = image

@@ -9,10 +9,12 @@ from .Base_module import Threaded_Module
 import speech_recognition as sr
 
 class Speech_Recognition (Threaded_Module):
-    """A module that listen to the user and create a text buffer from it.
-    If Sphinx is used it works offline but the Google algo uses theire server. 
     """
-    def __init__(self,device_index=2,Sphinx = True,Google = True,showmic=False,textbuffersize=3000):
+    A module that listen to the user and create a text buffer from it.
+    By default Sphinx is used because it works offline but the online Google option can be activated. 
+    Tend to behave badly if there is some constant noise.
+    """
+    def __init__(self,device_index=2,Google = False,showmic=False,textbuffersize=3000):
         
         Threaded_Module.__init__(self)
         self.name = "Speech Recognition"
@@ -24,20 +26,17 @@ class Speech_Recognition (Threaded_Module):
         if showmic:
             for index, name in enumerate(sr.Microphone.list_microphone_names()):
                 print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
-        self.sphinx = False
-        if Sphinx:
-            self.sphinx = True
-            self.textBuffS = ""
+
+
         self.device_index = device_index
-        
+        self.textBuff = ""
+
         self.google = False
         if Google:
             self.google = True
-            self.textBuffG = ""
+            
 
-
-        self.device_index = device_index
-        
+        self.device_index = device_index    
         self.r = sr.Recognizer()
 
 
@@ -50,21 +49,7 @@ class Speech_Recognition (Threaded_Module):
         while(self.exitFlag == 0):
             with sr.Microphone(device_index=self.device_index) as source: # the index controls the source of the audio
                 self.audio = self.r.listen(source)
-            if self.sphinx:
-                try:
-                    txt =   self.r.recognize_sphinx(self.audio)
-                    print("Sphinx: " + txt)
-                    self.textBuffS += " "+txt 
-
-                    diff = len(self.textBuffS) - self.textbuffersize
-                    if diff>0:
-                        self.textBuffG = self.textBuffG[diff:]
-
-                except sr.UnknownValueError:
-                    print("Sphinx could not understand audio")
-                except sr.RequestError as e:
-                    print("Sphinx error; {0}".format(e))
-
+                self.r.adjust_for_ambient_noise(source)
                 
 
 
@@ -72,11 +57,11 @@ class Speech_Recognition (Threaded_Module):
                 try:
                     txt = self.r.recognize_google(self.audio)
                     print("Google: " + txt)
-                    self.textBuffG += " "+txt
+                    self.textBuff += " "+txt
 
-                    diff = len(self.textBuffG) - self.textbuffersize
+                    diff = len(self.textBuff) - self.textbuffersize
                     if diff>0:
-                        self.textBuffG = self.textBuffG[diff:]
+                        self.textBuff = self.textBuff[diff:]
             
 
                 except sr.UnknownValueError:
@@ -84,6 +69,20 @@ class Speech_Recognition (Threaded_Module):
                 except sr.RequestError as e:
                     print("Could not request results from Google Speech Recognition service; {0}".format(e))
             
+            else:
+                try:
+                    txt =   self.r.recognize_sphinx(self.audio)
+                    print("Sphinx: " + txt)
+                    self.textBuff += " "+txt 
+
+                    diff = len(self.textBuff) - self.textbuffersize
+                    if diff>0:
+                        self.textBuff = self.textBuff[diff:]
+
+                except sr.UnknownValueError:
+                    print("Sphinx could not understand audio")
+                except sr.RequestError as e:
+                    print("Sphinx error; {0}".format(e))
 
 
                         

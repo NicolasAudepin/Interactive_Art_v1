@@ -65,6 +65,6 @@ class float_to_midi():
 
         vall = vall - self.min
 
-        self.midivalue =int(vall * 127 / (self.max - self.min))
+        self.midivalue =int(min(1+(vall * 127 / (self.max - self.min)),127))
 
     
