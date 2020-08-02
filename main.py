@@ -7,7 +7,7 @@ import time
 
 print("*** SETTING WEBCAM ***")
 cap = cv2.VideoCapture(0)
-input_shape = (256,256,3)
+input_shape = (480, 640, 3)   #(256,256,3)
 
 print("*** CHOOSE YOUR EXPERIENCE ***")
 
@@ -74,6 +74,7 @@ while(exitFlag == 0):
     #print(pathlib.Path().absolute())
     
     ret, frame = cap.read()
+    #print("cap read",frame.shape)
     experience.setInputImage(frame)
     output_im = experience.getOutputImage()
 

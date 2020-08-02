@@ -12,7 +12,7 @@ import cv2
 from PIL import Image, ImageFont, ImageDraw
 
 #my modules
-
+from .Modules.Video_overlay_module import VideoOver_Mod
 
 
 
@@ -27,16 +27,12 @@ class testExp(exp):
             self.moduleslist.append(self.module)
             self.module.start()
 
-            print(" - loading Mido module")
-            from .Modules.Midi_output_module import MidiOutMod, float_to_midi           
-            self.midiout= MidiOutMod('midoVCV 2')
-            
-            #tracks the number of objects on channel 1
-            self.nb_objectstomidi = float_to_midi('nb_objects',[0,8],10,1)
-            self.midiout.signals.append(self.nb_objectstomidi)
 
-            self.moduleslist.append(self.midiout)
-            self.midiout.start()
+            print("- import vid")
+            self.vid = VideoOver_Mod("Experience\\Modules\\Videos\\cubesloop.mp4",input_shape)
+            self.moduleslist.append(self.vid)
+            self.vid.start()
+            
 
             
 
@@ -50,10 +46,13 @@ class testExp(exp):
     #this called in the while loop and take as input an image
     def Treat_Image(self,image):
 
-        imageasarray = Image.fromarray(image)
-        out = image % 64
+        #print("treat image input",image.shape)
 
-        self.nb_objectstomidi.set_val(4)
+        imageasarray = Image.fromarray(image)
+        out = image % 64 
+        
+        out = out + self.vid.output_image
+
 
         return out
     
