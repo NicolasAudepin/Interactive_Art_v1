@@ -12,7 +12,7 @@ import cv2
 from PIL import Image, ImageFont, ImageDraw
 
 #my modules
-from .Modules.Video_overlay_module import VideoOver_Mod
+from .Modules.Video_Loop_module import Video_Loop_Mod
 
 
 
@@ -29,7 +29,7 @@ class testExp(exp):
 
 
             print("- import vid")
-            self.vid = VideoOver_Mod("Experience\\Modules\\Videos\\cubesloop.mp4",input_shape)
+            self.vid = Video_Loop_Mod("Experience\\Modules\\Videos\\cubesloop.mp4",input_shape)
             self.moduleslist.append(self.vid)
             self.vid.start()
             

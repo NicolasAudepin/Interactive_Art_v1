@@ -9,20 +9,21 @@ import numpy as np
 import cv2
 
 
-class VideoOver_Mod (Threaded_Module):
-    """A module that reads a video and gives to the experience easy whays to overlay it;
+class Video_Loop_Mod (Threaded_Module):
+    """A module that reads a video and gives to the experience easy ways to overlay it.
+    The loop can be stopped at its end with the looping value.
     """
     def __init__(self,video_file,input_shape):
         
         Threaded_Module.__init__(self)
-        self.name = "Video Overlay "
+        self.name = "Video Loop"
         self.output_image = []
         self.output_mask = []
         self.video_shape = input_shape
+        self.looping = True
+
         print(" - loading video")
-
         self.path = video_file
-
         self.cap = cv2.VideoCapture(self.path)
 
         
@@ -40,7 +41,7 @@ class VideoOver_Mod (Threaded_Module):
             if ret:
                 self.output_image = cv2.resize(frame,(self.video_shape[1],self.video_shape[0]))
             
-            else:
+            elif self.looping:
                 print("another one")
                 self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
             

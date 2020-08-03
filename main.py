@@ -19,6 +19,8 @@ print(" 3 Sweet VCV ")
 print(" 4 TextOnScreen")
 print(" 5 Mouvement (crashes)")
 print(" 6 Joconde")
+print(" 7 Fish")
+print(" 8 After Image")
 print("\nChoose an experience")
 nb = input()
 
@@ -49,6 +51,12 @@ elif nb =="5":
 elif nb =="6":
     from Experience.Joconde import Joconde
     experience = Joconde(1,input_shape)
+elif nb =="7":
+    from Experience.Fish import Fish
+    experience = Fish(1,input_shape)
+elif nb =="8":
+    from Experience.After_Image import After_Image
+    experience = After_Image(1,input_shape)
 else:
     from Experience.TestExp import testExp as exp
     experience = exp(1,  input_shape = input_shape)
@@ -62,11 +70,9 @@ else:
 
 
 print(" - Experience : "+ experience.name)
-experience.start()
-
-
 print("*** STARTING ***")
 print("press q to exit")
+experience.start()
 exitFlag = 0
 while(exitFlag == 0):
 
@@ -74,6 +80,7 @@ while(exitFlag == 0):
     #print(pathlib.Path().absolute())
     
     ret, frame = cap.read()
+    #frame is a numpy.ndarray
     #print("cap read",frame.shape)
     experience.setInputImage(frame)
     output_im = experience.getOutputImage()
