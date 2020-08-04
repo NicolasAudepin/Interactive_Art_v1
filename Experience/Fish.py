@@ -21,7 +21,7 @@ from timeit import default_timer as timer
 class Fish(exp):
     def __init__(self, threadID, input_shape):        
             exp.__init__(self, threadID, input_shape)
-            self.name = "Sweet VCV"
+            self.name = "Fish VCV"
 
             
             print(" - loading Yolo")  
@@ -86,4 +86,6 @@ class Fish(exp):
 
         return out
     
+
+
 

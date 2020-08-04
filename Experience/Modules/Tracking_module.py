@@ -7,7 +7,7 @@ from .Base_module import Threaded_Module
 import threading
 
 class multi_Tracker_Module(Threaded_Module):
-    def __init__(self, dim,labeled = False):
+    def __init__(self, dim,labeled = False,forgeting_speed = 20):
         Threaded_Module.__init__(self)
         self.name = "Tracking Module"
 
@@ -19,7 +19,7 @@ class multi_Tracker_Module(Threaded_Module):
         self.max_tracker = 8
 
         self.matching_treshold = 0.001 #matching score needed to match a tracker and some coordiantes
-        self.forgeting_speed = self.matching_treshold * 20 # certanty lost every frame 
+        self.forgeting_speed = self.matching_treshold * forgeting_speed # certanty lost every frame 
         self.forgeting_treshold = 0.4 #below this certainty the tracker is considered lost and is removed
 
 

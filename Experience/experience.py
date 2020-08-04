@@ -56,7 +56,5 @@ class Experience (threading.Thread):
     def getOutputImage(self):
         return self.output_im
 
-    
 
-      
 

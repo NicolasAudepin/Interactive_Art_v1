@@ -35,7 +35,8 @@ class MidiOutMod (Threaded_Module):
             for ftm in self.signals:
 
                 on = Message('note_on', channel = ftm.channel, note=ftm.note,velocity = ftm.midivalue)
-                print(on)
+                if self.Verbose == True:
+                    print(on)
                 self.port.send(on)
 
 

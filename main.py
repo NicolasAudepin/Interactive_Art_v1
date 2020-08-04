@@ -1,3 +1,7 @@
+"""
+Allows you to choose manually which experience you want to run. 
+The main code is responsible for the webcam image stream and the window showing the experience but not the sound reccording or playing... yet   
+"""
 print("*** GENERAL IMPORTS ***")
 import numpy as np
 import cv2
@@ -21,6 +25,7 @@ print(" 5 Mouvement (crashes)")
 print(" 6 Joconde")
 print(" 7 Fish")
 print(" 8 After Image")
+print(" 9 Cloud")
 print("\nChoose an experience")
 nb = input()
 
@@ -57,6 +62,9 @@ elif nb =="7":
 elif nb =="8":
     from Experience.After_Image import After_Image
     experience = After_Image(1,input_shape)
+elif nb =="9":
+    from Experience.Cloud import Cloud
+    experience = Cloud(1,input_shape)
 else:
     from Experience.TestExp import testExp as exp
     experience = exp(1,  input_shape = input_shape)

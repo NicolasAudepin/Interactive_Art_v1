@@ -46,7 +46,7 @@ class Sweet_Arpegiato(exp):
 
             print(" - setting Tracking module")
             from .Modules.Tracking_module import multi_Tracker_Module , Tracker
-            self.multi_Tracker = multi_Tracker_Module(dim=4,labeled = True)
+            self.multi_Tracker = multi_Tracker_Module(dim=4,labeled = True,forgeting_speed = 50)
             self.moduleslist.append(self.multi_Tracker)
             self.multi_Tracker.start()
 
@@ -69,6 +69,9 @@ class Sweet_Arpegiato(exp):
         with graph.as_default():
             res = self.Y.detect_image(imageasarray)
          #print(res)
+
+        res = [(label, l,t,r,b) for (label, l,t,r,b) in res if label != 'person' and label != 'sofa'] #everything but people 
+        
         self.multi_Tracker.set_new_coordonates(res)
 
 
@@ -98,7 +101,7 @@ class Sweet_Arpegiato(exp):
                 soundlist.append(i)
         self.Jukbox.nextloops = soundlist
 
-
+        image *=0
         #draw all trackers 
         for tracker in trackers:
              
@@ -116,6 +119,7 @@ class Sweet_Arpegiato(exp):
             #draw the last known position
             x,y,a,b = tracker.last_known_position
             color = tracker.color()
+            
             cv2.rectangle(image, (x, y), (a, b), color, 4)
             text = tracker.label +" "+str(tracker.certainty)
             cv2.putText(image,tracker.label, 

@@ -7,6 +7,7 @@ class Threaded_Module (threading.Thread):
         super().__init__()
         self.name = "Empty module"
         self.exitFlag  = 0 #put to one when its time to stop
+        self.Verbose = True
     
     #Override me
     def ModuleStop(self): #called when stopping the thread to stop midi output for example 

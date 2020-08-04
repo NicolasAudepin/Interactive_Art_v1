@@ -102,6 +102,7 @@ class Sweet_VCV(exp):
             #draw the last known position
             x,y,a,b = tracker.last_known_position
             color = tracker.color()
+            #image[y:b,x:a] *= 0 
             cv2.rectangle(image, (x, y), (a, b), color, 4)
             text = tracker.label +" "+str(tracker.certainty)
             cv2.putText(image,tracker.label, 
