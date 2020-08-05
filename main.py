@@ -97,6 +97,8 @@ while(exitFlag == 0):
 
     cv2.imshow('frame',cv2.resize(output_im,(1830,1200)))#roughly projector size
 
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+
     
     if cv2.waitKey(1) & 0xFF == ord('q'):
         # press q to exit

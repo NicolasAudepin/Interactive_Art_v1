@@ -22,7 +22,6 @@ class Cloud(exp):
     def __init__(self, threadID, input_shape):        
             exp.__init__(self, threadID, input_shape)
             self.name = "Cloud VCV"
-
             
             print(" - loading Yolo")  
             from .Modules.keras_yolo3 import yolo         
@@ -30,21 +29,16 @@ class Cloud(exp):
             graph = tf.get_default_graph()
             self.Y = yolo.YOLO()
 
-
             print(" - loading Mido module")
             from .Modules.Midi_output_module import MidiOutMod, float_to_midi           
-            self.midiout= MidiOutMod('midoVCV 2')
+            self.midiout= MidiOutMod('midoVCV 2',Verbose=False)
             
             #tracks the number of objects on channel 1
             self.touchingmid = float_to_midi('touching',[0,1],10,3)
             self.midiout.signals.append(self.touchingmid)
-
             self.moduleslist.append(self.midiout)
-            
             self.midiout.start()
-
-            
-            
+  
             print("- import vid")
             from.Modules.Video_Loop_module import Video_Loop_Mod
             self.color = Video_Loop_Mod("Experience\\Modules\\Videos\\cloud_color.mp4",input_shape)
@@ -54,18 +48,15 @@ class Cloud(exp):
             self.moduleslist.append(self.error)
             self.error.start()
             
-
             print(" - visual stuff")
             #cv2 put text stuff
             self.font = cv2.FONT_HERSHEY_SIMPLEX
             self.fontScale = 1
-            self.lineType = 2
-            
+            self.lineType = 2        
     
     def Are_touching(self,r1,r2):
         (label1, l1,t1,r1,b1) = r1
         (label2, l2,t2,r2,b2) = r2
-
         lr = (l1 > l2 and l1<r2) or (r1 > l2 and r1<r2) 
         tb = (t1 > t2 and l1<b2) or (r1 > t2 and r1<b2)
 
